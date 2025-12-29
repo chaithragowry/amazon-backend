@@ -8,15 +8,14 @@ const app = express();
 const allowedOrigins = [
     'http://localhost:5173',
     'http://localhost:3000',
-    process.env.FRONTEND_URL,
+    'https://amazon-client-alpha.vercel.app',
 ];
 
 app.use(cors({
     origin: function (origin, callback) {
         if (!origin) return callback(null, true);
 
-        if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
-            callback(null, true);
+         if (allowedOrigins.includes(origin) || !origin) {
         } else {
             callback(new Error('Not allowed by CORS'));
         }
